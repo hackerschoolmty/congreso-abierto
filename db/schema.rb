@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20160305205707) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "legislature_representatives", force: :cascade do |t|
+    t.integer  "legislature_id"
+    t.integer  "representative_id"
+    t.integer  "district_id"
+    t.integer  "party_id"
+    t.integer  "seat_id"
+    t.integer  "status"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "legislatures", force: :cascade do |t|
     t.date     "starts_on"
     t.date     "ends_on"
