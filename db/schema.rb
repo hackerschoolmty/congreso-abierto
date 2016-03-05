@@ -105,6 +105,20 @@ ActiveRecord::Schema.define(version: 20160305205707) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "representatives", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "representative_type"
+    t.integer  "parent_id"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.integer  "initiatives_count"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "resume_entries", force: :cascade do |t|
     t.date     "starts_on"
     t.date     "ends_on"
