@@ -33,6 +33,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include Devise::TestHelpers, type: :controller
+
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -47,6 +49,24 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+end
+
+def create_root_user
+  @root_user = FactoryGirl.create(:root_user)
+end
+
+def create_observer_user
+  @observer_user = FactoryGirl.create(:observer_user)
+end
+
+def signin_root
+  create_root_user
+  sign_in @root_user
+end
+
+def signin_observer
+  create_observer_user
+  sign_in @observer_user
 end
 
 Shoulda::Matchers.configure do |config|
