@@ -74,6 +74,7 @@ Congreso Abierto:
       representative_id:integer
       district_id:integer
       party_id:integer
+      seat_id:integer
       status:integer
     district:
       name:string
@@ -103,4 +104,7 @@ Congreso Abierto:
       initiative_id:integer
       representative_id:integer
       value:integer
-
+    seat:
+      legislature_id:integer
+      row:string
+      column:string
