@@ -1,0 +1,2 @@
+class WorkInformation < ResumeEntry
+end
