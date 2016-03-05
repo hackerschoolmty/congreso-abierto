@@ -7,5 +7,6 @@ RSpec.describe User, :type => :model do
 
   context 'validations' do
     it { should be_valid }
+    it { should define_enum_for(:role) }
   end
 end
