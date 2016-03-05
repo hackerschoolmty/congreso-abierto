@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20160305195115) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "comissions", force: :cascade do |t|
+    t.integer  "legislature_id"
+    t.string   "name"
+    t.integer  "comission_topic_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
