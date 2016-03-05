@@ -22,7 +22,7 @@ group :development, :test do
   gem "awesome_print"
   gem "factory_girl_rails"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.1.0"
+  gem "rspec-rails", "~> 3.4.1"
   gem "ffaker"
 end
 
@@ -37,3 +37,6 @@ group :production, :staging do
   gem "rails_12factor"
   gem "exception_notification"
 end
+
+
+gem 'devise'
