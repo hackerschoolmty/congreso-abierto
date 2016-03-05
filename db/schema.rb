@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20160305204037) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "initiatives", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -80,6 +85,17 @@ ActiveRecord::Schema.define(version: 20160305204037) do
     t.integer  "status",     default: 1
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "resume_entries", force: :cascade do |t|
+    t.date     "starts_on"
+    t.date     "ends_on"
+    t.string   "institution_name"
+    t.text     "description"
+    t.string   "degree"
+    t.string   "type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "seats", force: :cascade do |t|
@@ -118,6 +134,11 @@ ActiveRecord::Schema.define(version: 20160305204037) do
     t.integer  "value"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "work_informations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
