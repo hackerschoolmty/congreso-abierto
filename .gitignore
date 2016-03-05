@@ -16,7 +16,6 @@
 /tmp
 
 # Extra files to ignore
-doc/
 *.swp
 *.swo
 *~

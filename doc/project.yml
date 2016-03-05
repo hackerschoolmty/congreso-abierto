@@ -1,0 +1,106 @@
+Congreso Abierto:
+  Descripción: Una aplicación que muestra el performance
+              de los diputados del congreso y sus iniciativas.
+  Entidades:
+    - Superadmin.
+    - Observador.
+    - Legislatura.
+    - Partido.
+    - Comisión.
+    - Iniciativa.
+    - Diputado.
+
+  Stories:
+    Como Superadmin:
+      - Puedo iniciar sesión en la aplicación y accedo a un dashboard.
+      - Puedo crear usuarios de tipo observador.
+      - Puedo desactivar usuarios de tipo observador.
+      - Puedo eliminar usuarios de tipo observador.
+      - Puedo crear legislaturas.
+      - Puedo editar legislaturas.
+      - Puedo crear partidos políticos.
+      - Puedo eliminar partidos políticos.
+      - Puedo asignar partidos políticos a legislaturas.
+      - Puedo crear comisiones.
+    Como Observador:
+      - Puede crear diputados dentro de la legislatura.
+      - Puede asignar diputados a los partídos.
+      - Puedo asignar diputados a las comisiones.
+      - Puedo asignar un distrito a un diputado.
+      - Puede crear Iniciativas.
+      - Puede asignar iniciativas al diputado como autor.
+      - Puedo crear votaciones de iniciativas.
+      - Puedo registrar el voto de los diputados en las votaciones de iniciativas.
+      - Puedo asignar iniciativas a comisiones.
+      - Puedo asignar un curul a un diputado
+      - Puedo desasignar el curul al diputado
+      - Puedo cambiar al diputado de curul si este (el curul) esta disponible
+
+  models:
+    user:
+      # devise stuff
+      first_name:string
+      last_name:string
+      auth_token:string
+      role:integer
+    representative:
+      first_name:string
+      last_name:string
+      email:string
+      phone:string
+      representative_type:enum
+      parent_id:integer
+      twitter:string
+      facebook:string
+      initiatives_count:integer
+    resume_entry:
+      starts_on:date
+      ends_on:date
+      institution_name:string
+      description:text
+      degree:string
+      type:string
+    education:
+      < resume_entry
+    work_information:
+      < resume entry
+    legislature:
+      starts_on:date
+      ends_on:date
+      name:string
+      status:integer
+    legislature_representative:
+      legislature_id:integer
+      representative_id:integer
+      district_id:integer
+      party_id:integer
+      status:integer
+    district:
+      name:string
+      description:text
+    party:
+      name:string
+      acronym:string
+      status:integer
+    commission_topics:
+      name:string
+      description:text
+    comission:
+      legislature_id:integer
+      name:string
+      commission_topic_id:integer
+    comission_representative:
+      comission_id:integer
+      representative_id:integer
+      position:integer
+      status:integer
+    initiative:
+      name:string
+      description:text
+      initiative_type:integer
+      voting_date:date
+    vote:
+      initiative_id:integer
+      representative_id:integer
+      value:integer
+
