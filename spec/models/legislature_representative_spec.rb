@@ -7,4 +7,5 @@ RSpec.describe LegislatureRepresentative, type: :model do
 
   context 'validations' do
   	it { should be_valid}
+  end
 end
