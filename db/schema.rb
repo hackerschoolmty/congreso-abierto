@@ -11,33 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305205707) do
+ActiveRecord::Schema.define(version: 20160305223519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comission_representatives", force: :cascade do |t|
-    t.integer  "comission_id"
+  create_table "commission_representatives", force: :cascade do |t|
+    t.integer  "commission_id"
     t.integer  "representative_id"
     t.integer  "position"
-    t.integer  "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "status",            default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
-  create_table "comission_topics", force: :cascade do |t|
+  create_table "commission_topics", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "comissions", force: :cascade do |t|
+  create_table "commissions", force: :cascade do |t|
     t.integer  "legislature_id"
     t.string   "name"
-    t.integer  "comission_topic_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "commission_topic_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -63,18 +63,14 @@ ActiveRecord::Schema.define(version: 20160305205707) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "educations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "initiatives", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "initiative_type"
     t.date     "voting_date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "status",          default: 0
   end
 
   create_table "legislature_representatives", force: :cascade do |t|
@@ -83,18 +79,18 @@ ActiveRecord::Schema.define(version: 20160305205707) do
     t.integer  "district_id"
     t.integer  "party_id"
     t.integer  "seat_id"
-    t.integer  "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "status",            default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "legislatures", force: :cascade do |t|
     t.date     "starts_on"
     t.date     "ends_on"
     t.string   "name"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "parties", force: :cascade do |t|
@@ -163,9 +159,9 @@ ActiveRecord::Schema.define(version: 20160305205707) do
   create_table "votes", force: :cascade do |t|
     t.integer  "initiative_id"
     t.integer  "representative_id"
-    t.integer  "value"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "value",             default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "work_informations", force: :cascade do |t|
