@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :legislature do
-    starts_on "2016-03-05"
-    ends_on "2016-03-05"
-    name "MyString"
-    status 1
+    starts_on { Date.today }
+    ends_on   { Date.today + 3.years }
+    name      { 'XXIIV' }
+    status    { Legislature.statuses[:inactive] }
   end
 end
