@@ -20,13 +20,13 @@ class LegislaturesController < ApplicationController
   def destroy
   end
 
-  private}
+  private
 
   def set_user
     @user = current_user
   end
 
   def params_legislature
-    
+
   end
 end
