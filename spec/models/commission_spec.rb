@@ -1,13 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Commission, type: :model do
-  describe "associations" do
+  let(:commission) { FactoryGirl.build(:commission) }
 
+  subject { commission }
+
+  context 'validations' do
+    it { should be_valid }
+  end
+
+  context 'associations' do
     it { should belong_to(:commission_topic) }
-
-    skip "Missing Legislature model" do
-      should belong_to(:legislature)
-    end
-
+    it { should belong_to(:legislature) }
+    it { should have_many(:commission_representatives) }
   end
 end

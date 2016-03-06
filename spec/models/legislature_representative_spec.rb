@@ -8,4 +8,10 @@ RSpec.describe LegislatureRepresentative, type: :model do
   context 'validations' do
   	it { should be_valid}
   end
+
+  context 'associations' do
+    it { should belong_to :district }
+    it { should belong_to :legislature }
+    it { should belong_to :representative }
+  end
 end
