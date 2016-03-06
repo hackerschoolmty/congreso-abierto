@@ -82,3 +82,5 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
