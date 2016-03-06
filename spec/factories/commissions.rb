@@ -1,7 +1,7 @@
 FactoryGirl.define do
-  factory :comission do
+  factory :commission do
     legislature_id 1
     name "MyString"
-    comission_topic_id 1
+    commission_topic_id 1
   end
 end
