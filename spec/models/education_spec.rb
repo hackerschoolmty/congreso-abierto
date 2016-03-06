@@ -5,7 +5,12 @@ RSpec.describe Education, type: :model do
 
   subject { education }
 
+  it_behaves_like 'sti model'
+
   context 'validations' do
     it { should be_valid }
   end
+
+
+
 end

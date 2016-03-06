@@ -5,6 +5,8 @@ RSpec.describe WorkInformation, type: :model do
 
   subject { work_information }
 
+  it_behaves_like 'sti model'
+  
   context 'validations' do
     it { should be_valid }
   end
