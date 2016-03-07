@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :pages
 
+  resources :representatives
+  
   namespace :admin do
     resources :dashboard
 
