@@ -1,4 +1,5 @@
-class LegislaturesController < ApplicationController
+class Admin::LegislaturesController < Admin::BaseController
+
   before_action :set_legislature, only: [:edit, :update]
 
   def index
@@ -14,7 +15,7 @@ class LegislaturesController < ApplicationController
 
     respond_to do |format|
       if @legislature.save
-        format.html { redirect_to legislature_path(@legislature) }
+        format.html { redirect_to admin_legislatures_path(@legislature) }
       else
         format.html { render :new }
       end
@@ -31,13 +32,6 @@ class LegislaturesController < ApplicationController
       else
         format.html { render :edit }
       end
-    end    
-  end
-
-  def destroy
-    @legislature.destroy
-    respond_to do |format|
-      format.html { redirect_to legislature_comments_url(@legislature), notice: 'Comment was successfully destroyed.' }      
     end    
   end
 

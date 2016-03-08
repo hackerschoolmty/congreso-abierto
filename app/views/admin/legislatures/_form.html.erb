@@ -1,4 +1,4 @@
-<%= form_for(@legislature) do |f| %>
+<%= form_for @legislature, url: admin_legislature_path(@legislature) do |f| %>
   <% if @legislature.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@legislature.errors.count, "error") %> prohibited this legislature from being saved:</h2>

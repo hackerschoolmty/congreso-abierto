@@ -20,8 +20,7 @@
         <td><%= legislature.status %></td>
         <td><%= legislature.starts_on %></td>
         <td><%= legislature.ends_on %></td>
-        <td><%= link_to 'Show', legislature %></td>
-        <td><%= link_to 'Edit', edit_legislature_path(legislature) %></td>td>
+        <td><%= link_to 'Edit', edit_admin_legislature_path(legislature) %></td>td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New legislature', legislatures_new_path %>
+<%= link_to 'New legislature', new_admin_legislature_path %>

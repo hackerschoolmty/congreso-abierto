@@ -1,26 +1,12 @@
 Rails.application.routes.draw do
-  get 'legislatures/index'
-
-  get 'legislatures/show'
-
-  get 'legislatures/new'
-
-  get 'legislatures/create'
-
-  get 'legislatures/edit'
-
-  get 'legislatures/update'
-
-  get 'legislatures/destroy'
-
-  resources :pages
-
+  resources :pages  
   resources :representatives
+  resources :legislatures
   
   namespace :admin do
     resources :dashboard
     resources :observers
-
+    resources :legislatures
     root 'dashboard#index'
   end
 
