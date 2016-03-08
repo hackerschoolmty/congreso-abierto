@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :representatives
   resources :legislatures
   
+  resources :legislatures_representatives
+
   namespace :admin do
     resources :dashboard
     resources :observers
