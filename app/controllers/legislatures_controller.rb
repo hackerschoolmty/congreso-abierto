@@ -1,9 +1,8 @@
 class LegislaturesController < ApplicationController
   before_action :set_legislature
-  before_action :authenticate_user!
 
   def index
-    @legislatures = Legistlature.All
+    @legislatures = Legislature.All
   end
 
   def show
