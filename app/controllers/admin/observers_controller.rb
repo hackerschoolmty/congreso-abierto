@@ -1,7 +1,7 @@
 class Admin::ObserversController < Admin::BaseController
 
   def index
-
+    @observers = User.observers.page(params[:page]).per(25)
   end
 
   def new
