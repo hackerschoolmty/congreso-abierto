@@ -1,2 +1,33 @@
-<h1>Legislatures#index</h1>
-<p>Find me in app/views/legislatures/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Legislatures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Starts On</th>
+      <th>Ends On</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @egislatures.each do |legislature| %>
+      <tr>
+        <td><%= legislature.name %></td>
+        <td><%= legislature.price %></td>
+        <td><%= legislature.starts_on %></td>
+        <td><%= legislature.ends_on %></td>
+        <td><%= link_to 'Show', legislature %></td>
+        <td><%= link_to 'Edit', edit_legislature_path(legislature) %></td>
+        <td><%= link_to 'Destroy', legislature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New legislature', new_legislature_path %>
