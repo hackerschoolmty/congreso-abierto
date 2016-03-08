@@ -1,5 +1,5 @@
 class LegislaturesController < ApplicationController
-  
+
   before_action :set_legislature, only: [:edit, :update, :show]
 
   def index
@@ -11,7 +11,7 @@ class LegislaturesController < ApplicationController
   end
 
   def show
-    
+    @legilature = Legislature.find(params[:id])
   end
 
   def create
@@ -19,11 +19,11 @@ class LegislaturesController < ApplicationController
 
     respond_to do |format|
       if @legislature.save
-        format.html { redirect_to legislatures_path(@legislature) }
+        format.html { redirect_to @legislature }
       else
         format.html { render :new }
       end
-    end    
+    end
   end
 
   def edit
@@ -32,11 +32,11 @@ class LegislaturesController < ApplicationController
   def update
     respond_to do |format|
       if @legislature.update(legislature_params)
-        format.html { redirect_to legislatures_path(@legislature), notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @legislature, notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
-    end    
+    end
   end
 
   private
