@@ -1,0 +1,52 @@
+<%= form_for @observer, url: admin_observers_path(@observer),  :html => { :class => "form-horizontal product" } do |f| %>
+
+  <%= render "shared/form_errors", object: @observer %>
+
+  <div class="form-group">
+    <%= f.label :first_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :first_name, :class => 'form-control'%>
+    </div>
+    <%=f.error_span(:first_name) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :last_name, :class => 'form-control'%>
+    </div>
+    <%=f.error_span(:last_name) %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :email, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :email, :class => 'form-control'%>
+    </div>
+    <%=f.error_span(:email) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.password_field :password, :class => 'form-control'%>
+    </div>
+    <%=f.error_span(:password) %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :password_confirmation, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.password_field :password_confirmation, :class => 'form-control'%>
+    </div>
+    <%=f.error_span(:password_confirmation) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to "Cancel", admin_observers_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+
+<% end %>

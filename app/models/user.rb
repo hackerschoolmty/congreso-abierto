@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable
 
   enum role: [ :observer, :root ]
+
+  scope :observers, -> { where(role: "observer") }
 end
