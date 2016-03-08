@@ -5,6 +5,42 @@ RSpec.describe Admin::ObserversController, type: :controller do
   let(:root_user_session) { signin_root }
   let(:observer_user_session) { signin_observer }
 
+  describe "GET #index" do 
+
+    let(:action) {:index}
+    it_behaves_like 'get request under admin namespace'
+
+    it "renders index template" do 
+      get :index, {}, root_user_session
+      expect(response).to render_template(:index)
+    end
+
+    context "with page parameter" do 
+      it "assigns 25 observers per page to instance" do 
+        
+        50.times { FactoryGirl.create(:observer_user) }
+        get :index, {page: 1}, root_user_session
+        expect(assigns(:observers).count).to eq( 25 )
+
+      end
+
+      it "assigns different observers per page to instance" do 
+
+        50.times { FactoryGirl.create(:observer_user) }
+
+        observers = User.observers.page(1).per(25)
+        get :index, {page: 1}, root_user_session
+        expect(assigns(:observers)).to eq( observers )
+
+        observers = User.observers.page(2).per(25)
+        get :index, {page: 2}, root_user_session
+        expect(assigns(:observers)).to eq( observers )
+
+      end
+    end
+
+  end
+
   describe "GET #new" do
 
     let(:action) {:new}
