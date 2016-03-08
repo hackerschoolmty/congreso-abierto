@@ -43,18 +43,6 @@ RSpec.describe Admin::ObserversController, type: :controller do
 
     end
     
-    context "when user is differente than root" do 
-
-      it "redirects" do
-        get action, {}, observer_user_session
-        expect(response.status).to eq(302)
-      end
-
-    end
-
-    
-
-
   end
 
 end
