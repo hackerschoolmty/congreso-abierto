@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard
+    resources :observers
 
     root 'dashboard#index'
   end
