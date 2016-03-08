@@ -1,3 +1,7 @@
+  <%= link_to "New Observer",
+              new_admin_observer_path,
+              :class => 'btn btn-primary' %>
+              
 <table class="table table-striped">
     <thead>
       <tr>
@@ -20,7 +24,5 @@
     </tbody>
   </table>
 
+<%= paginate observers, theme: 'twitter-bootstrap-3' %>
 
-  <%= link_to "New Observer",
-              new_admin_observer_path,
-              :class => 'btn btn-primary' %>

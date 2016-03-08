@@ -39,6 +39,9 @@ GEM
     arel (6.0.3)
     awesome_print (1.6.1)
     bcrypt (3.1.10)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -212,6 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap-kaminari-views
   coffee-rails (~> 4.1.0)
   database_cleaner
   delayed_job_active_record
