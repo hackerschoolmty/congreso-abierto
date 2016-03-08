@@ -1,0 +1,15 @@
+<h1>Create Representative / Crear Diputado-Representante</h1>
+<form accept-charset="UTF-8" action="/representatives" method="post">
+ <%= token_tag nil %>
+  Nombre(s)<input type="text" name="representative[first_name]"/>
+  Apellido(s)<input type="text" name="representative[last_name]" />
+  Correo<input type="text" name="representative[email]"/>
+  Telefono<input type="text" name="representative[phone]"/>
+  Tipo de Diputado<select name="representative[representative_type]">
+  	<option value="0">plurinominal</option>
+  	<option value="1">voto publico</option>
+  </select>
+   Twitter<input type="text" name="representative[twitter]"/>
+   Facebook<input type="text" name="representative[facebook]"/>
+   <input type="submit" value="Agregar">
+</form>
