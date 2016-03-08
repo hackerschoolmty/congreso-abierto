@@ -1,0 +1,62 @@
+<h1>Relacion entre Diputados y Legislaturas</h1>
+<form accept-charset="UTF-8" action="/legislatures_representatives" method="post">
+ <%= token_tag nil %>
+ 
+<div class="form-group row">
+   <div class="col-sm-4"> Legislatura</div> 
+   <div class="col-sm-4">
+   		<select name="legislature_representative[legislature_id]" class="form-control">
+   			<% @legislatures.each do |legislature| %>
+				<option value="<%= legislature.id %>"><%= legislature.name %></option>
+			<% end %>
+   		</select>
+   </div>
+ </div>
+
+<div class="form-group row">
+   <div class="col-sm-4"> Diputado</div> 
+   <div class="col-sm-4">
+   		<select name="legislature_representative[representative_id]" class="form-control">
+   			<% @representatives.each do |representative| %>
+				<option value="<%= representative.id %>"><%= representative.first_name %> <%= representative.last_name %></option>
+			<% end %>
+   		</select>
+   </div>
+ </div>
+
+<div class="form-group row">
+   <div class="col-sm-4"> Distrito</div> 
+   <div class="col-sm-4">
+   		<select name="legislature_representative[district_id]" class="form-control">
+   			<% @districts.each do |district| %>
+				<option value="<%= district.id %>"><%= district.name %></option>
+			<% end %>
+   		</select>
+   </div>
+ </div>
+
+<div class="form-group row">
+   <div class="col-sm-4"> Partido</div> 
+   <div class="col-sm-4">
+   		<select name="legislature_representative[party_id]" class="form-control">
+   			<% @partys.each do |party| %>
+				<option value="<%= party.id %>"><%= party.acronym %></option>
+			<% end %>
+   		</select>
+   </div>
+ </div>
+
+<div class="form-group row">
+   <div class="col-sm-4"> Curul</div> 
+   <div class="col-sm-4">
+   		<select name="legislature_representative[seat_id]" class="form-control">
+   			<% @seats.each do |seat| %>
+				<option value="<%= seat.id %>"><%= seat.row %><%= seat.column %></option>
+			<% end %>
+   		</select>
+   </div>
+ </div>
+<div class="form-group row">
+   <input class="btn btn-default" type="submit" value="Agregar">
+</div>
+</form>

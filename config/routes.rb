@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :representatives
   
+  resources :legislatures_representatives
+
   namespace :admin do
     resources :dashboard
 

@@ -1,5 +1,7 @@
 class RepresentativesController < ApplicationController
 
+	before_action :authenticate_user!, only: [:create] 
+
 	def index
 		@representatives = Representative.all
 	end
@@ -7,7 +9,7 @@ class RepresentativesController < ApplicationController
 	def create
 		@representative = Representative.new(representative_params)
 		if @representative.save
-	
+			@representative
 		end
 	end
 
