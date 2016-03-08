@@ -1,6 +1,6 @@
 class Admin::LegislaturesController < Admin::BaseController
 
-  before_action :set_legislature, only: [:edit, :update]
+  before_action :set_legislature, only: [:edit, :update, :show]
 
   def index
     @legislatures = Legislature.all
@@ -8,6 +8,10 @@ class Admin::LegislaturesController < Admin::BaseController
 
   def new
     @legislature = Legislature.new
+  end
+
+  def show
+    
   end
 
   def create
@@ -28,7 +32,7 @@ class Admin::LegislaturesController < Admin::BaseController
   def update
     respond_to do |format|
       if @legislature.update(legislature_params)
-        format.html { redirect_to @legislature, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to admin_legislatures_path(@legislature), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -41,7 +45,7 @@ class Admin::LegislaturesController < Admin::BaseController
     @legislature = Legislature.find(params[:id])
   end
 
-  def params_legislature
+  def legislature_params
     params.require(:legislature).permit(:name, :status, :starts_on, :ends_on)
   end
 end

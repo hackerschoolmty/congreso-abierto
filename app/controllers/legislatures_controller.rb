@@ -1,5 +1,6 @@
 class LegislaturesController < ApplicationController
-  before_action :set_legislature, only: [:edit, :update]
+  
+  before_action :set_legislature, only: [:edit, :update, :show]
 
   def index
     @legislatures = Legislature.all
@@ -9,12 +10,16 @@ class LegislaturesController < ApplicationController
     @legislature = Legislature.new
   end
 
+  def show
+    
+  end
+
   def create
     @legislature = Legislature.new(legislature_params)
 
     respond_to do |format|
       if @legislature.save
-        format.html { redirect_to legislature_path(@legislature) }
+        format.html { redirect_to legislatures_path(@legislature) }
       else
         format.html { render :new }
       end
@@ -27,17 +32,10 @@ class LegislaturesController < ApplicationController
   def update
     respond_to do |format|
       if @legislature.update(legislature_params)
-        format.html { redirect_to @legislature, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to legislatures_path(@legislature), notice: 'Comment was successfully updated.' }
       else
         format.html { render :edit }
       end
-    end    
-  end
-
-  def destroy
-    @legislature.destroy
-    respond_to do |format|
-      format.html { redirect_to legislature_comments_url(@legislature), notice: 'Comment was successfully destroyed.' }      
     end    
   end
 
@@ -47,7 +45,7 @@ class LegislaturesController < ApplicationController
     @legislature = Legislature.find(params[:id])
   end
 
-  def params_legislature
+  def legislature_params
     params.require(:legislature).permit(:name, :status, :starts_on, :ends_on)
   end
 end
