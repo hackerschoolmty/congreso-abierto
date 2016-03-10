@@ -13,8 +13,8 @@ RSpec.describe LegislaturesController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      legilature = FactoryGirl.create(:legislature)
-      get :show, { id: legilature.id }
+      legislature = FactoryGirl.create(:legislature)
+      get :show, { id: legislature.id }
       expect(response).to have_http_status(:success)
     end
   end
@@ -35,17 +35,17 @@ RSpec.describe LegislaturesController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      legilature = FactoryGirl.create(:legislature)
-      get :edit, { id: legilature.id }
+      legislature = FactoryGirl.create(:legislature)
+      get :edit, { id: legislature.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "PUT #update" do
     it "returns http success" do
-      legilature = FactoryGirl.create(:legislature)
-      put :update, { id: legilature.id, legislature: {name: 'XVIII'}}
-      expect(response).to redirect_to(legilature)
+      legislature = FactoryGirl.create(:legislature)
+      put :update, { id: legislature.id, legislature: {name: 'XVIII'}}
+      expect(response).to redirect_to(legislature)
     end
   end
 
