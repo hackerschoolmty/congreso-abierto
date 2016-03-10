@@ -1,7 +1,7 @@
 class Admin::ObserversController < Admin::BaseController
 
   def index
-    @observers = User.observers.page(params[:page]).per(25)
+    @observers = User.observers.order(:id).page(params[:page]).per(25)
   end
 
   def new
@@ -30,6 +30,20 @@ class Admin::ObserversController < Admin::BaseController
       flash[:success] = "Observer activated successfully!"
     else
       flash[:danger] =  "Observer could not be activated"
+    end
+
+    redirect_to admin_observers_path
+  end
+
+  def deactivate
+
+    @observer = User.observers.find(params[:id])
+    @observer.status = "inactive"
+
+    if @observer.save
+      flash[:success] = "Observer deactivated successfully!"
+    else
+      flash[:danger] =  "Observer could not be deactivated"
     end
 
     redirect_to admin_observers_path
