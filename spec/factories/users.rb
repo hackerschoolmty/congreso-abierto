@@ -12,6 +12,16 @@ FactoryGirl.define do
 
     factory :observer_user do
       role { 0 }
+
+      factory :active_observer_user do 
+        status { 0 }
+      end
+
+      factory :inactive_observer_user do 
+        status { 1 }
+      end
+
+
     end
 
   end

@@ -28,11 +28,11 @@ RSpec.describe Admin::ObserversController, type: :controller do
 
         50.times { FactoryGirl.create(:observer_user) }
 
-        observers = User.observers.page(1).per(25)
+        observers = User.observers.order(:id).page(1).per(25)
         get :index, {page: 1}, root_user_session
         expect(assigns(:observers)).to eq( observers )
 
-        observers = User.observers.page(2).per(25)
+        observers = User.observers.order(:id).page(2).per(25)
         get :index, {page: 2}, root_user_session
         expect(assigns(:observers)).to eq( observers )
 
@@ -81,4 +81,73 @@ RSpec.describe Admin::ObserversController, type: :controller do
 
   end
 
+  describe "PUT #activate" do 
+
+    let(:action) {:activate}
+    let(:inactive_observer) {FactoryGirl.create(:inactive_observer_user)}
+    let(:action_params) { {id: inactive_observer.id} }
+
+    context "when user is different than root" do 
+
+      it "redirects" do
+        put :activate, action_params, observer_user_session
+        expect(response.status).to eq(302)
+      end
+
+    end
+
+    context "when user is root" do 
+
+      it "changes observer status to active" do 
+        put :activate, action_params, signin_root
+
+        inactive_observer.reload
+        expect(inactive_observer.status).to eq("active")
+
+      end
+
+      it "redirects to observers index" do 
+        put :activate, action_params, signin_root
+
+        expect(response).to redirect_to(admin_observers_path)
+      end
+
+    end
+
+  end
+
+  describe "PUT #deactivate" do 
+
+    let(:action) {:deactivate}
+    let(:active_observer) {FactoryGirl.create(:active_observer_user)}
+    let(:action_params) { {id: active_observer.id} }
+
+    context "when user is different than root" do 
+
+      it "redirects" do
+        put :deactivate, action_params, observer_user_session
+        expect(response.status).to eq(302)
+      end
+
+    end
+
+    context "when user is root" do 
+
+      it "changes observer status to active" do 
+        put :deactivate, action_params, signin_root
+
+        active_observer.reload
+        expect(active_observer.status).to eq("inactive")
+
+      end
+
+      it "redirects to observers index" do 
+        put :deactivate, action_params, signin_root
+
+        expect(response).to redirect_to(admin_observers_path)
+      end
+
+    end
+
+  end
 end
