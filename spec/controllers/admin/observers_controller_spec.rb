@@ -150,4 +150,35 @@ RSpec.describe Admin::ObserversController, type: :controller do
     end
 
   end
+
+  describe "DELETE #destroy" do 
+
+    let!(:observer) {FactoryGirl.create(:observer_user)}
+    let(:action_params) { {id: observer.id} }
+
+    context "when user is different than root" do 
+
+      it "redirects" do
+        delete :destroy, action_params, observer_user_session
+        expect(response.status).to eq(302)
+      end
+
+    end
+
+    context "when user is root" do 
+
+      it "changes observer count by -1" do
+
+        expect { delete :destroy, action_params, signin_root  }.to change(User.observers, :count).by(-1)
+      end
+
+      it "redirects to observers index" do 
+        delete :destroy, action_params, signin_root
+
+        expect(response).to redirect_to(admin_observers_path)
+      end
+
+    end
+
+  end
 end

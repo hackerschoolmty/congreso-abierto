@@ -1,5 +1,5 @@
 class Admin::ObserversController < Admin::BaseController
-
+  before_action :set_observer, only: [:activate, :deactivate, :destroy]
   def index
     @observers = User.observers.order(:id).page(params[:page]).per(25)
   end
@@ -23,7 +23,6 @@ class Admin::ObserversController < Admin::BaseController
   end
 
   def activate
-    @observer = User.observers.find(params[:id])
     @observer.status = "active"
 
     if @observer.save
@@ -36,8 +35,6 @@ class Admin::ObserversController < Admin::BaseController
   end
 
   def deactivate
-
-    @observer = User.observers.find(params[:id])
     @observer.status = "inactive"
 
     if @observer.save
@@ -49,9 +46,23 @@ class Admin::ObserversController < Admin::BaseController
     redirect_to admin_observers_path
   end
 
+  def destroy
+    if @observer.destroy
+      flash[:success] = "Observer destroyed successfully"
+    else
+      flash[:warning] = "Observer could'nt be destroyed"
+    end
+
+  redirect_to admin_observers_path
+  end
+
   private
   def observer_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def set_observer
+     @observer = User.observers.find(params[:id])
   end
 
 end
