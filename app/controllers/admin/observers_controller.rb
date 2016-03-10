@@ -22,6 +22,19 @@ class Admin::ObserversController < Admin::BaseController
 
   end
 
+  def activate
+    @observer = User.observers.find(params[:id])
+    @observer.status = "active"
+
+    if @observer.save
+      flash[:success] = "Observer activated successfully!"
+    else
+      flash[:danger] =  "Observer could not be activated"
+    end
+
+    redirect_to admin_observers_path
+  end
+
   private
   def observer_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
