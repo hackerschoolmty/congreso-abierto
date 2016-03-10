@@ -81,4 +81,30 @@ RSpec.describe Admin::ObserversController, type: :controller do
 
   end
 
+  describe "POST #activate" do 
+
+    let(:action) {:activate}
+    it_behaves_like 'post request under admin namespace'
+
+    context "when user is root" do 
+
+      it "changes observer status to active" do 
+        inactive_observer = FactoryGirl.create(:inactive_observer_user)
+        post :activate, {id: inactive_observer.id}, signin_root
+
+        inactive_observer.reload!
+        expect(inactive_observer.status).to eq(1)
+
+      end
+
+      it "redirects to observers index" do 
+        inactive_observer = FactoryGirl.create(:inactive_observer_user)
+        post :activate, {id: inactive_observer.id}, signin_root
+
+        expect(response).to redirect_to(admin_observers_path)
+      end
+
+    end
+
+  end
 end
