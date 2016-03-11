@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       put 'deactivate' => 'observers#deactivate', on: :member
     end 
     resources :legislatures
+    resources :commission_topics
     root 'dashboard#index'
   end
 

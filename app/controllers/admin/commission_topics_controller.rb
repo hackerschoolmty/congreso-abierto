@@ -18,7 +18,7 @@ class Admin::CommissionTopicsController < Admin::BaseController
 
     respond_to do |format|
       if @commission_topic.save
-        format.html { redirect_to @commission_topic }
+        format.html { redirect_to admin_commission_topic_path(@commission_topic) }
       else
         format.html { render :new }
       end

@@ -54,7 +54,7 @@ RSpec.describe Admin::CommissionTopicsController, type: :controller do
           																description: commission_topic.description
           															}
 										}, root_user_session
-      expect(response).to redirect_to(admin_commission_topic_path(CommissionTopics.last))
+      expect(response).to redirect_to(admin_commission_topic_path(CommissionTopic.last))
     end    
 
     it "returns http unsuccess by role" do
