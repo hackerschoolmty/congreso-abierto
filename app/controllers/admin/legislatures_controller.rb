@@ -1,5 +1,5 @@
 class Admin::LegislaturesController < Admin::BaseController
-
+  before_action :authenticate_user!, only: [:create, :update]
   before_action :set_legislature, only: [:edit, :update, :show]
 
   def index

@@ -6,7 +6,7 @@ RSpec.describe LegislaturesController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      get :indexs
       expect(response).to have_http_status(:success)
     end
   end
