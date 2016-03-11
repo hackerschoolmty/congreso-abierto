@@ -1,8 +1,7 @@
-<%= form_for @legislature, url: admin_legislature_path(@legislature) do |f| %>
+<%= form_for [:admin, @legislature], html: { class: 'form-horizontal'} do |f| %>
   <% if @legislature.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@legislature.errors.count, "error") %> prohibited this legislature from being saved:</h2>
-
       <ul>
       <% @legislature.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,23 +10,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class: 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
+
+  <div class="form-group">
+    <%= f.label :starts_on, class: 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_field :starts_on, type: 'date', class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :starts_on %><br>
-    <%= f.date_select :starts_on %>
+
+  <div class="form-group">
+    <%= f.label :ends_on, class: 'control-label col-sm-2' %>
+    <div class="col-sm-10">
+      <%= f.text_field :ends_on, type: 'date', class: 'form-control' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :ends_on %><br>
-    <%= f.date_select :ends_on %>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <label><%= f.check_box :status %> Activo</label>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-sm-10 col-sm-offset-2">
+      <button type='submit' class='btn btn-primary'>Save</button>
+    </div>
   </div>
 <% end %>
