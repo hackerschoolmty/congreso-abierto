@@ -14,7 +14,7 @@ class Admin::CommissionTopicsController < Admin::BaseController
 	end
 
 	def create
-		@commission_topic = CommissionTopic.new(comission_topics_params)
+		@commission_topic = CommissionTopic.new(commission_topics_params)
 
     respond_to do |format|
       if @commission_topic.save
@@ -31,7 +31,7 @@ class Admin::CommissionTopicsController < Admin::BaseController
 		@commission_topic = CommissionTopic.find(params[:id])
 	end
 
-	def comission_topics_params
+	def commission_topics_params
 		params.require(:commission_topic).permit(:name, :description)
 	end
 
