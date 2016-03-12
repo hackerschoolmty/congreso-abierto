@@ -8,13 +8,15 @@ class Admin::CommissionsController < Admin::BaseController
 
 	def new
 		@commission = Commission.new
+		@legislatures = Legislature.all
+		@commission_topics = CommissionTopic.all
 	end
 
 	def show
 	end
 
 	def create
-		@commission = Commission.new(comission_params)
+		@commission = Commission.new(commission_params)
 
     respond_to do |format|
       if @commission.save
@@ -32,7 +34,6 @@ class Admin::CommissionsController < Admin::BaseController
 	end
 
 	def commission_params
-		params.require(:commission).permit(:name, legislature_id:, commission_topic_id:)
+		params.require(:commission).permit(:name, :legislature_id, :commission_topic_id)
 	end
-
 end

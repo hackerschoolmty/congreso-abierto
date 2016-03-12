@@ -1,0 +1,31 @@
+<%= form_for @commission, url: admin_commissions_path(@commission) do |f| %>
+  <% if @commission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commission.errors.count, "error") %> prohibited this commission from being saved:</h2>
+
+      <ul>
+      <% @commission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :legislature_id %><br>  
+    <% legislatures = options_from_collection_for_select(@legislatures, 'id', 'name') %>
+    <%= f.select :legislature_id,  legislatures %>
+  </div>
+  <div class="field">
+    <%= f.label :commission_topic_id %><br>  
+    <% commission_topics = options_from_collection_for_select(@commission_topics, 'id', 'name') %>
+    <%= f.select :commission_topic_id,  commission_topics %>
+  </div> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

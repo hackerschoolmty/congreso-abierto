@@ -33,14 +33,14 @@ RSpec.describe Admin::CommissionsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do      
-      commissions = FactoryGirl.create(:commissions)
-      get :show, { id: commissions.id }, root_user_session
+      commission = FactoryGirl.create(:commission)
+      get :show, { id: commission.id }, root_user_session
       expect(response).to have_http_status(:success)
     end
 
     it "returns http unsuccess by role" do
-      commissions = FactoryGirl.create(:commissions)
-      get :show, { id: commissions.id }, observer_user_session
+      commission = FactoryGirl.create(:commission)
+      get :show, { id: commission.id }, observer_user_session
       expect(response).to have_http_status(302)
     end       
   end  
@@ -49,7 +49,7 @@ RSpec.describe Admin::CommissionsController, type: :controller do
     it "returns http success" do
       commission = FactoryGirl.create(:commission)
       post :create, {
-      								commissions: { 
+      								commission: { 
       															 name: commission.name,
           													 commission_topic_id: commission.commission_topic_id,
                                      legislature_id: commission.legislature_id
@@ -61,7 +61,7 @@ RSpec.describe Admin::CommissionsController, type: :controller do
     it "returns http unsuccess by role" do
       commission = FactoryGirl.create(:commission)
       post :create, {
-                      commissions: { 
+                      commission: { 
                                      name: commission.name,
                                      commission_topic_id: commission.commission_topic_id,
                                      legislature_id: commission.legislature_id
