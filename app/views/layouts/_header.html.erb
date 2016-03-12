@@ -19,7 +19,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                       <% if current_user.root? %>
-                        <li><%= link_to 'Admin', admin_root_path %></li>
+                        <li><%= link_to 'Dashboard', admin_root_path %></li>
                       <% end %>
                       <li><%= link_to 'Profile', "#" %></li>
                       <li role="separator" class="divider"></li>
