@@ -101,7 +101,8 @@ RSpec.feature "Observers user management", :type => :feature do
       expect(page).to_not have_link "Dashboard"
 
       visit admin_observers_path
-      expect(page).to have_content "You don't have authorization to go there"
+      expect(page).to have_content "You don't have authorization to go there!"
+      expect(page).to have_link "Sign in"
     end 
 
   end
