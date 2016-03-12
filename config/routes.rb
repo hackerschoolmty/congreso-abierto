@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end 
     resources :legislatures
     resources :commission_topics
+    resources :commissions
     root 'dashboard#index'
   end
 
